@@ -28,13 +28,6 @@ class CharacterDetailActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
-
-//        val mImage_IV = findViewById<AppCompatImageView>(R.id.mImage_IV)
-//        val mName_TV = findViewById<AppCompatTextView>(R.id.mName_TV)
-
-
-
         viewModel.characterByIdLiveData.observe(this){ character->
             epoxyController.character = character
             if (character==null) {
@@ -42,25 +35,9 @@ class CharacterDetailActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
                 return@observe
             }
-//            mName_TV.text = response.name
-//            Picasso.get().load(response.image).into(mImage_IV)
-//
-//            if (response.gender.equals("male",true)){
-//                Picasso.get().load(response.image).into(mImage_IV)
-//                }
         }
-
-
-//        val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-//
-//        val retrofit: Retrofit = Retrofit.Builder()
-////            .client(getLoggingHttpClient())
-//            .baseUrl("https://rickandmortyapi.com/api/")
-//            .addConverterFactory(MoshiConverterFactory.create(moshi))
-//            .build()
-//
-//        val rickAndMortyService: RickAndMortyService = retrofit.create(RickAndMortyService::class.java)
         val id = intent.getIntExtra(Constants.INTENT_EXTRA_CHARACTER_ID, 1)
+
         viewModel.refreshCharacter(characterId = id)
 
         val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)

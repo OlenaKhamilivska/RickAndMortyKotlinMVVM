@@ -122,7 +122,7 @@ class CharacterDetailsEpoxyController (
 }
 
     data class EpisodeCarouselItemEpoxyModel(
-        val episode: Episode,
+        val episode: Episode
 //        val onEpisodeClicked: (Int) -> Unit
     ): ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item) {
 

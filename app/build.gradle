@@ -78,4 +78,9 @@ dependencies {
     implementation "com.airbnb.android:epoxy-paging3:4.6.2"
 
 //    kapt "com.airbnb.android:epoxy-processor:4.6.2"
+
+    // Networking
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    debugImplementation "com.github.chuckerteam.chucker:library:3.4.0"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.4.0"
 }

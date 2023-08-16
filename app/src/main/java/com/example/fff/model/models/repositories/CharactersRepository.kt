@@ -1,8 +1,11 @@
 package com.example.fff.model.models.repositories
 
+import com.example.fff.SimpleMortyCache
 import com.example.fff.model.models.NetworkLayer
+import com.example.fff.model.models.domain.mappers.CharacterMapper
 import com.example.fff.model.models.pojoResponses.characterResponses.GetCharacterByIdResponse
 import com.example.fff.model.models.pojoResponses.characterResponses.GetCharactersPageResponse
+import com.example.fff.model.models.pojoResponses.episodeResponses.GetEpisodeByIdResponse
 
 class CharactersRepository {
 
@@ -19,7 +22,7 @@ class CharactersRepository {
 
         return request.body
     }
-//
+
 //    suspend fun getCharacterById(characterId: Int): Character? {
 //
 //        // Check the cache for our character
@@ -41,10 +44,10 @@ class CharactersRepository {
 //        )
 //
 //        // Update cache & return value
-//        SimpleMortyCache.characterMap[characterId] = character
+////        SimpleMortyCache.characterMap[characterId] = character
 //        return character
 //    }
-//
+
 //    private suspend fun getEpisodesFromCharacterResponse(
 //        characterResponse: GetCharacterByIdResponse
 //    ): List<GetEpisodeByIdResponse> {
