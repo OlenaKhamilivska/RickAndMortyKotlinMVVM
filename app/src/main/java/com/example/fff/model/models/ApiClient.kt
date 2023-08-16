@@ -23,9 +23,13 @@ private val rickAndMortyService: RickAndMortyService
         return  safeApiCall { rickAndMortyService.getEpisodeById(episodeId)}
     }
 
-    suspend fun getEpisodeRange (episodeRange: String): SimpleResponse<GetEpisodeByIdResponse> {
+//    suspend fun getEpisodeRange (episodeRange: String): SimpleResponse<GetEpisodeByIdResponse> {
+//        return safeApiCall { rickAndMortyService.getEpisodeRange(episodeRange) }
+//    }
+    suspend fun getEpisodeRange(episodeRange: String): SimpleResponse<List<GetEpisodeByIdResponse>> {
         return safeApiCall { rickAndMortyService.getEpisodeRange(episodeRange) }
     }
+
 
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {
         return try {

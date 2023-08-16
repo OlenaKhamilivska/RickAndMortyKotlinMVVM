@@ -1,16 +1,18 @@
 package com.example.fff.view
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.fff.Constants
 import com.example.fff.R
 import com.example.fff.view.controllers.CharacterDetailsEpoxyController
 import com.example.fff.viewmodels.SharedViewModel
+
 
 //private lateinit var mName_TV : TextView
 
@@ -41,6 +43,7 @@ class CharacterDetailActivity : AppCompatActivity() {
         viewModel.refreshCharacter(characterId = id)
 
         val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
+
         epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
     }
 

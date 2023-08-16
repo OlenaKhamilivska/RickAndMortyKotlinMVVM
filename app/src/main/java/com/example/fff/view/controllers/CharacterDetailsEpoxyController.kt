@@ -1,5 +1,6 @@
 package com.example.fff.view.controllers
 
+import android.util.Log
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.example.fff.R
@@ -59,7 +60,9 @@ class CharacterDetailsEpoxyController (
         ).id("image").addTo(this)
 
         // Episode carousel list section
+        Log.d("TAG11!", "buildModels1: "+character!!.episodeList.isNotEmpty())
         if (character!!.episodeList.isNotEmpty()) {
+            Log.d("TAG11!", "buildModels2: "+character!!.episodeList.isNotEmpty())
             val items = character!!.episodeList.map {
                 EpisodeCarouselItemEpoxyModel(it).id(it.id)
             }

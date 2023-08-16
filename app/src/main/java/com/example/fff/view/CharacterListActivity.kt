@@ -2,8 +2,11 @@ package com.example.fff.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.fff.Constants
 import com.example.fff.R
@@ -25,7 +28,19 @@ class CharacterListActivity: AppCompatActivity() {
         viewModel.charactersPagedListLiveData.observe(this){pagedList->
             epoxyController.submitList(pagedList)
         }
-        findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView).setController(epoxyController)
+       // findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView).setController(epoxyController)
+
+        val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
+        epoxyRecyclerView.layoutManager = GridLayoutManager(this,2)
+
+
+        epoxyRecyclerView.apply {
+
+            layoutManager = GridLayoutManager(applicationContext, 2)
+            epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
+        }
+
+
 
 
     }
