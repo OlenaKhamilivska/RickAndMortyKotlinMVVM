@@ -8,4 +8,5 @@
     <string name="Type">Type</string>
     <string name="Species">Species</string>
     <string name="header_text">header text</string>
+    <string name="rick_and_morty">Rick and Morty App</string>
 </resources>
