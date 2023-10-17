@@ -39,7 +39,7 @@ class CharacterDetailActivity : AppCompatActivity() {
         }
         val id = intent.getIntExtra(Constants.INTENT_EXTRA_CHARACTER_ID, 1)
 
-        viewModel.refreshCharacter(characterId = id)
+        viewModel.fetchCharacter(characterId = id)
 
         val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
 
