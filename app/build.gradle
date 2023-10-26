@@ -76,13 +76,14 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
 
     // Paging
-    implementation "androidx.paging:paging-runtime-ktx:3.2.1"
-
+    def paging_version = "3.0.0"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     // Epoxy
-    implementation "com.airbnb.android:epoxy:4.6.2"
-    implementation "com.airbnb.android:epoxy-paging:4.6.2"
-    implementation "com.airbnb.android:epoxy-paging3:4.6.2"
+    def epoxyVersion = "4.6.2"
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    implementation "com.airbnb.android:epoxy-paging:$epoxyVersion"
+    implementation "com.airbnb.android:epoxy-paging3:$epoxyVersion"
 
 //    kapt "com.airbnb.android:epoxy-processor:4.6.2"
 

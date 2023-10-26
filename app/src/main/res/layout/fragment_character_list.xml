@@ -13,7 +13,8 @@
         app:spanCount="2"
         android:padding="8dp"
         app:itemSpacing="8dp"
-        tools:itemCount="12">
+        tools:itemCount="12"
+        tools:listitem="@layout/model_character_list_item">
     </com.airbnb.epoxy.EpoxyRecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

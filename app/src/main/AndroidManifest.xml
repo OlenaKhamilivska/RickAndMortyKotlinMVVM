@@ -25,7 +25,7 @@
             android:name=".view.CharacterDetailActivity">
         </activity>
 
-        <activity android:name=".view.NavGraphActivity"
+        <activity android:name=".NavGraphActivity"
             android:launchMode="standard"
             android:exported="true">
             <intent-filter>

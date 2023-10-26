@@ -5,27 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Episodes"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-    </androidx.appcompat.widget.AppCompatTextView>
-
-<!--    <com.airbnb.epoxy.EpoxyRecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/epoxyRecyclerView"-->
-<!--        android:orientation="vertical"-->
-<!--        android:paddingBottom="25dp"-->
-<!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">-->
-<!--    </com.airbnb.epoxy.EpoxyRecyclerView>-->
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/epoxyRecyclerView"
+        android:padding="8dp"
+        app:itemSpacing="8dp"
+        tools:itemCount="12"
+        tools:listitem="@layout/model_episode_list_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+    </com.airbnb.epoxy.EpoxyRecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
