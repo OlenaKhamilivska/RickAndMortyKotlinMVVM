@@ -68,7 +68,7 @@
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxyRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:orientation="horizontal"
         android:overScrollMode="never"

@@ -60,14 +60,16 @@ class CharacterDetailsEpoxyController (
         ).id("image").addTo(this)
 
         // Episode carousel list section
-        Log.d("TAG11!", "buildModels1: "+character!!.episodeList.isNotEmpty())
+        Log.d("TAG11!", "buildModels1: " + character!!.episodeList.isNotEmpty())
         if (character!!.episodeList.isNotEmpty()) {
-            Log.d("TAG11!", "buildModels2: "+character!!.episodeList.isNotEmpty())
+            Log.d("TAG11!", "buildModels2: " + character!!.episodeList.isNotEmpty())
             val items = character!!.episodeList.map {
                 EpisodeCarouselItemEpoxyModel(it, onEpisodeClicked = { episodeId ->
                     onEpisodeClicked(episodeId)
                 }).id(it.id)
             }
+
+            TitleEpoxyModel(title = "Episodes").id("title_episodes").addTo(this)
             CarouselModel_()
                 .id("episode_carousel")
                 .models(items)
@@ -124,12 +126,12 @@ class CharacterDetailsEpoxyController (
             textView.text = description
         }
     }
-}
+
 
     data class EpisodeCarouselItemEpoxyModel(
         val episode: Episode,
         val onEpisodeClicked: (Int) -> Unit
-    ): ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item) {
+    ) : ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item) {
 
         override fun ModelEpisodeCarouselItemBinding.bind() {
             episodeTextView.text = episode.getFormattedSeasonTruncated()
@@ -142,9 +144,18 @@ class CharacterDetailsEpoxyController (
 
     data class CharacterGridTitleEpoxyModel(
         val title: String
-    ): ViewBindingKotlinModel<ModelCharacterListTitleBinding>(R.layout.model_character_list_title) {
+    ) : ViewBindingKotlinModel<ModelCharacterListTitleBinding>(R.layout.model_character_list_title) {
 
         override fun ModelCharacterListTitleBinding.bind() {
             textView.text = title
         }
     }
+    data class TitleEpoxyModel(
+        val title: String
+    ): ViewBindingKotlinModel<ModelTitleBinding>(R.layout.model_title) {
+
+        override fun ModelTitleBinding.bind() {
+            titleTextView.text = title
+        }
+    }
+}

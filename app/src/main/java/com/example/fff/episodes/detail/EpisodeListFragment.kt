@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
+import com.example.fff.NavGraphDirections
 import com.example.fff.R
 import com.example.fff.databinding.FragmentEpisodeListBinding
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -27,9 +28,9 @@ class EpisodeListFragment : Fragment(R.layout.fragment_episode_list) {
 
         val epoxyController = EpisodeListEpoxyController {episodeClickedId ->
             val navDirections =
-                EpisodeListFragmentDirections.actionEpisodeListFragmentToEpisodeDetailBottomSheetFragment22(
-                    episodeClickedId
-                )
+              NavGraphDirections.actionGlobalToEpisodeDetailBottomSheetFragment(
+                  episodeId = episodeClickedId
+              )
             findNavController().navigate(navDirections)
         }
 
@@ -41,8 +42,8 @@ class EpisodeListFragment : Fragment(R.layout.fragment_episode_list) {
 
         binding.epoxyRecyclerView.setController(epoxyController)
     }
-        override fun onDestroyView() {
-            super.onDestroyView()
-            _binding = null
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+}
