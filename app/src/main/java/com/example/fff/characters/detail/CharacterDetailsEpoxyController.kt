@@ -16,7 +16,7 @@ import com.example.fff.databinding.*
 import com.example.fff.domain.models.Episode
 
 class CharacterDetailsEpoxyController (
-//    private val onEpisodeClicked: (Int) -> Unit
+    private val onEpisodeClicked: (Int) -> Unit
 ) : EpoxyController() {
 
     var isLoading: Boolean = true
@@ -64,7 +64,9 @@ class CharacterDetailsEpoxyController (
         if (character!!.episodeList.isNotEmpty()) {
             Log.d("TAG11!", "buildModels2: "+character!!.episodeList.isNotEmpty())
             val items = character!!.episodeList.map {
-                EpisodeCarouselItemEpoxyModel(it).id(it.id)
+                EpisodeCarouselItemEpoxyModel(it, onEpisodeClicked = { episodeId ->
+                    onEpisodeClicked(episodeId)
+                }).id(it.id)
             }
             CarouselModel_()
                 .id("episode_carousel")
@@ -125,16 +127,16 @@ class CharacterDetailsEpoxyController (
 }
 
     data class EpisodeCarouselItemEpoxyModel(
-        val episode: Episode
-//        val onEpisodeClicked: (Int) -> Unit
+        val episode: Episode,
+        val onEpisodeClicked: (Int) -> Unit
     ): ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item) {
 
         override fun ModelEpisodeCarouselItemBinding.bind() {
             episodeTextView.text = episode.getFormattedSeasonTruncated()
             episodeDetailsTextView.text = "${episode.name}\n${episode.airDate}"
-//            root.setOnClickListener {
-//                onEpisodeClicked(episode.id)
-//            }
+            root.setOnClickListener {
+                onEpisodeClicked(episode.id)
+            }
         }
     }
 

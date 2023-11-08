@@ -19,7 +19,12 @@ class CharacterDetailFragment : Fragment() {
         ViewModelProvider(this).get(CharacterDetailViewModel::class.java)
     }
 
-   private val epoxyController = CharacterDetailsEpoxyController()
+   private val epoxyController = CharacterDetailsEpoxyController{ episodeClickedId ->
+//       val navDirections = NavGraphDirections.actionGlobalToEpisodeDetailBottomSheetFragment(
+//           episodeId = episodeClickedId
+//       )
+//       findNavController().navigate(navDirections)
+   }
     private val safeArgs: CharacterDetailFragmentArgs by navArgs()
 
     override fun onCreateView(

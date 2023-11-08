@@ -40,4 +40,9 @@ interface RickAndMortyService {
     suspend fun getEpisodesPage(
         @Query("page") pageIndex: Int
     ): Response<GetEpisodesPageResponse>
+
+    @GET("character/{list}")
+    suspend fun getMultipleCharacters(
+        @Path("list") characterList: List<String>
+    ): Response<List<GetCharacterByIdResponse>>
 }

@@ -1,6 +1,5 @@
 package com.example.fff.domain.models
 
-import java.lang.Character
 
 data class Episode(
     val id: Int = 0,

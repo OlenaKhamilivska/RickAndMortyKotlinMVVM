@@ -1,7 +1,7 @@
 package com.example.fff.domain.models
 
 data class Character(
-    val episodeList: List<Episode>,
+    val episodeList: List<Episode> = listOf(),
     val gender: String,
     val id: Int,
     val image: String,

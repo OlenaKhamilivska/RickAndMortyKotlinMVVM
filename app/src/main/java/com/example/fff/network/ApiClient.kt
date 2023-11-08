@@ -34,6 +34,10 @@ private val rickAndMortyService: RickAndMortyService
         return safeApiCall { rickAndMortyService.getEpisodesPage(pageIndex) }
     }
 
+    suspend fun getMultipleCharacters(characterList: List<String>): SimpleResponse<List<GetCharacterByIdResponse>> {
+        return safeApiCall { rickAndMortyService.getMultipleCharacters(characterList) }
+    }
+
 
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {
         return try {

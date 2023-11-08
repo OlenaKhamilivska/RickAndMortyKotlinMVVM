@@ -11,7 +11,7 @@ import kotlinx.coroutines.ObsoleteCoroutinesApi
 
 @ObsoleteCoroutinesApi
 class EpisodeListEpoxyController (
-//    private val onEpisodeClicked: (Int) -> Unit
+    private val onEpisodeClicked: (Int) -> Unit
 ) : PagingDataEpoxyController<EpisodesUiModel>() {
 
     override fun buildItemModel(currentPosition: Int, item: EpisodesUiModel?): EpoxyModel<*> {
@@ -21,7 +21,7 @@ class EpisodeListEpoxyController (
                 EpisodeListItemEpoxyModel(
                     episode = episode,
                     onClick = { episodeId ->
-
+                        onEpisodeClicked(episodeId)
                     }
                 ).id("episode_${episode.id}")
             }
