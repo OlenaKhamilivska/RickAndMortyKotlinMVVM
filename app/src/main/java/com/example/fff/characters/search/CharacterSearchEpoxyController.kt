@@ -4,6 +4,7 @@ import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging3.PagingDataEpoxyController
 import com.example.fff.R
 import com.example.fff.databinding.ModelCharacterListItemBinding
+import com.example.fff.databinding.ModelLocalExceptionErrorStateBinding
 import com.example.fff.domain.models.Character
 import com.example.fff.epoxy.LoadingEpoxyModel
 import com.example.fff.epoxy.ViewBindingKotlinModel
@@ -36,7 +37,8 @@ class CharacterSearchEpoxyController(
 
     override fun addModels(models: List<EpoxyModel<*>>) {
         localException?.let {
-// TODO:
+            LocalExceptionErrorStateEpoxyModel(it).id("error_state").addTo(this)
+            return
         }
         if (models.isEmpty()) {
             LoadingEpoxyModel().id("loading").addTo(this)
@@ -62,18 +64,19 @@ class CharacterSearchEpoxyController(
             }
         }
     }
+
+
+    data class LocalExceptionErrorStateEpoxyModel(
+        val localException: CharacterSearchPagingSource.LocalException
+    ) : ViewBindingKotlinModel<ModelLocalExceptionErrorStateBinding>(R.layout.model_local_exception_error_state) {
+
+        override fun ModelLocalExceptionErrorStateBinding.bind() {
+            titleTextView.text = localException.title
+            descriptionTextView.text = localException.description
+        }
+
+        override fun getSpanSize(totalSpanCount: Int, position: Int, itemCount: Int): Int {
+            return totalSpanCount
+        }
+    }
 }
-//
-//    data class LocalExceptionErrorStateEpoxyModel(
-//        val localException: CharacterSearchPagingSource.LocalException
-//    ) : ViewBindingKotlinModel<ModelLocalExceptionErrorStateBinding>(R.layout.model_local_exception_error_state) {
-//
-//        override fun ModelLocalExceptionErrorStateBinding.bind() {
-//            titleTextView.text = localException.title
-//            descriptionTextView.text = localException.description
-//        }
-//
-//        override fun getSpanSize(totalSpanCount: Int, position: Int, itemCount: Int): Int {
-//            return totalSpanCount
-//        }
-//    }

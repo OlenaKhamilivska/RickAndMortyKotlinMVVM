@@ -9,6 +9,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.example.fff.Constants
+import com.example.fff.arch.Event
 
 class CharacterSearchViewModel : ViewModel() {
 
@@ -17,7 +18,7 @@ class CharacterSearchViewModel : ViewModel() {
         get() {
             if (field == null || field?.invalid == true) {
                 field = CharacterSearchPagingSource(currentUserSearch){ localException ->
-                    Log.e("LOCAL", localException.toString())
+                    _localExceptionEventLiveData.postValue(Event(localException))
                 }
             }
 
@@ -37,9 +38,9 @@ class CharacterSearchViewModel : ViewModel() {
     }.flow.cachedIn(viewModelScope)
 
     // For error handling propagation
-//    private val _localExceptionEventLiveData = MutableLiveData<Event<LocalException>>()
-//    val localExceptionEventLiveData: LiveData<Event<LocalException>> = _localExceptionEventLiveData
-//
+    private val _localExceptionEventLiveData = MutableLiveData<Event<CharacterSearchPagingSource.LocalException>>()
+    val localExceptionEventLiveData: LiveData<Event<CharacterSearchPagingSource.LocalException>> = _localExceptionEventLiveData
+
     fun submitQuery(userSearch: String) {
         currentUserSearch = userSearch
         pagingSource?.invalidate()
