@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     //id 'kotlin-kapt'
     id  'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 
 //    id 'kotlin-kapt'
 }
@@ -97,5 +99,11 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
 
     implementation 'androidx.core:core-ktx:1.12.0'
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
+    implementation("com.google.firebase:firebase-crashlytics")
 
 }
