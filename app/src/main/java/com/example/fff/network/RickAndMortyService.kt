@@ -21,6 +21,12 @@ interface RickAndMortyService {
         @Query("page") pageId: Int
     ): Response<GetCharactersPageResponse>
 
+    @GET("character")
+    suspend fun getCharacterPage(
+        @Query("name") characterName: String,
+        @Query("page") pageId: Int
+    ): Response<GetCharactersPageResponse>
+
     @GET("episode/{episode-id}")
     suspend fun getEpisodeById(
         @Path("episode-id") episodeId: Int

@@ -10,7 +10,7 @@ object CharacterMapper {
 
     fun buildFrom (
         response: GetCharacterByIdResponse,
-        episodes: List<GetEpisodeByIdResponse>
+        episodes: List<GetEpisodeByIdResponse> = emptyList()
     ): Character {
         return Character(
             episodeList = episodes.map {
@@ -30,8 +30,7 @@ object CharacterMapper {
                 url = response.origin.url
             ),
             species = response.species,
-            status = response.status,
-            type = response.type
+            status = response.status
             )
     }
 }
