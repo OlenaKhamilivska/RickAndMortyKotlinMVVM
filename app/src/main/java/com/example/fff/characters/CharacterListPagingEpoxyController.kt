@@ -8,12 +8,15 @@ import com.example.fff.characters.detail.CharacterDetailsEpoxyController
 import com.example.fff.epoxy.LoadingEpoxyModel
 import com.example.fff.epoxy.ViewBindingKotlinModel
 import com.example.fff.databinding.ModelCharacterListItemBinding
+import com.example.fff.databinding.ModelCharacterListTitleBinding
 import com.squareup.picasso.Picasso
 import java.util.Locale
 
 class CharacterListPagingEpoxyController(
     private val onCharacterSelected: (Int) -> Unit
 ): PagedListEpoxyController<GetCharacterByIdResponse>() {
+
+
 
     override fun buildItemModel(
         currentPosition: Int,
@@ -34,7 +37,7 @@ class CharacterListPagingEpoxyController(
             return
         }
 
-        CharacterDetailsEpoxyController.CharacterGridTitleEpoxyModel("Main Family")
+        CharacterGridTitleEpoxyModel("Main Family")
             .id("main_family_header")
             .addTo(this)
 
@@ -44,7 +47,7 @@ class CharacterListPagingEpoxyController(
             it.name[0].toUpperCase()
         }.forEach { mapEntry ->
             val character = mapEntry.key.toString().toUpperCase(Locale.US)
-            CharacterDetailsEpoxyController.CharacterGridTitleEpoxyModel(title = character)
+            CharacterGridTitleEpoxyModel(title = character)
                 .id(character)
                 .addTo(this)
 
@@ -67,11 +70,16 @@ class CharacterListPagingEpoxyController(
                 onCharacterSelected(characterId)
             }
         }
+    }
+    data class CharacterGridTitleEpoxyModel(
+        val title: String
+    ) : ViewBindingKotlinModel<ModelCharacterListTitleBinding>(R.layout.model_character_list_title) {
 
-        //alfabet
+        override fun ModelCharacterListTitleBinding.bind() {
+            textView.text = title
+        }
         override fun getSpanSize(totalSpanCount: Int, position: Int, itemCount: Int): Int {
             return totalSpanCount
         }
-
     }
 }

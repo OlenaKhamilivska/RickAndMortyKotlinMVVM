@@ -9,7 +9,6 @@ import com.example.fff.epoxy.ViewBindingKotlinModel
 import com.example.fff.databinding.ModelCharacterDetailsDataPointBinding
 import com.example.fff.databinding.ModelCharacterDetailsHeaderBinding
 import com.example.fff.databinding.ModelCharacterDetailsImageBinding
-import com.example.fff.databinding.ModelCharacterListTitleBinding
 import com.example.fff.domain.models.Character
 import com.squareup.picasso.Picasso
 import com.example.fff.databinding.*
@@ -139,15 +138,6 @@ class CharacterDetailsEpoxyController (
             root.setOnClickListener {
                 onEpisodeClicked(episode.id)
             }
-        }
-    }
-
-    data class CharacterGridTitleEpoxyModel(
-        val title: String
-    ) : ViewBindingKotlinModel<ModelCharacterListTitleBinding>(R.layout.model_character_list_title) {
-
-        override fun ModelCharacterListTitleBinding.bind() {
-            textView.text = title
         }
     }
     data class TitleEpoxyModel(
