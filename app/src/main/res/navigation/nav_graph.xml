@@ -9,69 +9,63 @@
         android:id="@+id/action_global_to_episodeDetailBottomSheetFragment"
         app:destination="@id/episodeDetailBottomSheetFragment" />
 
+    <!--region Characters-->
     <fragment
         android:id="@+id/characterListFragment"
         android:name="com.example.fff.characters.CharacterListFragment"
         android:label="Rick and Morty Characters"
-        tools:layout="@layout/fragment_character_list" >
+        tools:layout="@layout/fragment_character_list">
+
         <action
             android:id="@+id/action_characterListFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment"
             app:enterAnim="@anim/slide_in_from_right"
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_left"
-            app:popExitAnim="@anim/slide_out_to_right">
-        </action>
+            app:popExitAnim="@anim/slide_out_to_right" />
+
     </fragment>
+
     <fragment
         android:id="@+id/characterDetailFragment"
         android:name="com.example.fff.characters.detail.CharacterDetailFragment"
-        android:label="Character Detail"
+        android:label="Character Details"
         tools:layout="@layout/fragment_character_detail">
 
-        <deepLink app:uri="https://fff.com/character/{characterId}" />
+        <deepLink app:uri="https://simplemorty.com/character/{characterId}" />
 
         <argument
             android:name="characterId"
             android:defaultValue="-1"
-            app:argType="integer"/>
-<!--        <action-->
-<!--            android:id="@+id/action_characterDetailFragment_to_episodeDetailBottomSheetFragment2"-->
-<!--            app:destination="@id/episodeDetailBottomSheetFragment" />-->
+            app:argType="integer" />
     </fragment>
 
+    <fragment
+        android:id="@+id/characterSearchFragment"
+        android:name="com.example.fff.characters.search.CharacterSearchFragment"
+        android:label="Character Search"
+        tools:layout="@layout/fragment_character_search" />
+    <!--endregion Characters-->
+
+    <!--region Episodes-->
     <fragment
         android:id="@+id/episodeListFragment"
         android:name="com.example.fff.episodes.detail.EpisodeListFragment"
         android:label="Rick and Morty Episodes"
-        tools:layout="@layout/fragment_episode_list" >>
-        <action
-            android:id="@+id/action_episodeListFragment_to_episodeDetailBottomSheetFragment"
-            app:destination="@id/episodeDetailBottomSheetFragment" />
-    </fragment>
-<!--        <action-->
-<!--            android:id="@+id/action_characterListFragment_to_characterDetailFragment"-->
-<!--            app:destination="@id/characterDetailFragment"-->
-<!--            app:enterAnim="@anim/slide_in_from_right"-->
-<!--            app:exitAnim="@anim/slide_out_to_left"-->
-<!--            app:popEnterAnim="@anim/slide_in_from_left"-->
-<!--            app:popExitAnim="@anim/slide_out_to_right">-->
-<!--        </action>-->
+        tools:layout="@layout/fragment_episode_list"/>
+
     <dialog
         android:id="@+id/episodeDetailBottomSheetFragment"
         android:name="com.example.fff.episodes.detail.EpisodeDetailBottomSheetFragment"
-        android:label="EpisodeDetailBottomSheetFragment"
+        android:label=""
         tools:layout="@layout/fragment_episode_detail">
 
         <argument
             android:name="episodeId"
             android:defaultValue="-1"
-            app:argType="integer"/>
+            app:argType="integer" />
+
     </dialog>
-    <fragment
-        android:id="@+id/characterSearchFragment"
-        android:name="com.example.fff.characters.search.CharacterSearchFragment"
-        android:label="Character Search"
-        tools:layout="@layout/fragment_character_search"  />
+    <!--endregion Episodes-->
 
 </navigation>

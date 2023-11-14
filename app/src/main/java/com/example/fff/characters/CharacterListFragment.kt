@@ -12,6 +12,7 @@ import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.fff.BaseFragment
 import com.example.fff.R
 import com.example.fff.databinding.FragmentCharacterListBinding
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.lang.RuntimeException
 
 class CharacterListFragment : BaseFragment(R.layout.fragment_character_list) {
@@ -35,6 +36,9 @@ class CharacterListFragment : BaseFragment(R.layout.fragment_character_list) {
     }
 
     private fun onCharacterSelected(characterId: Int) {
+        FirebaseCrashlytics.getInstance().recordException(
+            RuntimeException("character Id $characterId")
+        )
 //        throw RuntimeException("for Firebase")
         val directions =
             CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(

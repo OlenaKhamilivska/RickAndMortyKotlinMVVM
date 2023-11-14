@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.fff.R
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 class NavGraphActivity: AppCompatActivity() {
 
@@ -23,6 +24,8 @@ class NavGraphActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav_graph)
+
+        FirebaseCrashlytics.getInstance().setUserId("12345")
 
         val dateFormat = DateFormat.getDateFormat(
             applicationContext

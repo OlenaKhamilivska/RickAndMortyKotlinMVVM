@@ -24,19 +24,26 @@ class EpisodesViewModel : ViewModel() {
         EpisodePagingSource(repository)
     }.flow.cachedIn(viewModelScope).map {
         it.insertSeparators { model: EpisodesUiModel?, model2: EpisodesUiModel? ->
+
+            // Initial separator for the first season header (before the whole list)
             if (model == null) {
                 return@insertSeparators EpisodesUiModel.Header("Season 1")
             }
-            if (model2 == null){
+
+            // No footer
+            if (model2 == null) {
                 return@insertSeparators null
             }
+
+            // Make sure we only care about the items (episodes)
             if (model is EpisodesUiModel.Header || model2 is EpisodesUiModel.Header) {
                 return@insertSeparators null
             }
+
+            // Little logic to determine if a separator is necessary
             val episode1 = (model as EpisodesUiModel.Item).episode
             val episode2 = (model2 as EpisodesUiModel.Item).episode
-
-            if (episode2.seasonNumber != episode1.seasonNumber) {
+            return@insertSeparators if (episode2.seasonNumber != episode1.seasonNumber) {
                 EpisodesUiModel.Header("Season ${episode2.seasonNumber}")
             } else {
                 null

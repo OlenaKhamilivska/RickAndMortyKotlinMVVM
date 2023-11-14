@@ -7,15 +7,15 @@
 
 
     <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/epoxyRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/epoxyRecyclerView"
         android:padding="8dp"
+        android:paddingBottom="24dp"
         app:itemSpacing="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="12"
-        tools:listitem="@layout/model_episode_list_item"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-    </com.airbnb.epoxy.EpoxyRecyclerView>
+        tools:listitem="@layout/model_episode_list_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

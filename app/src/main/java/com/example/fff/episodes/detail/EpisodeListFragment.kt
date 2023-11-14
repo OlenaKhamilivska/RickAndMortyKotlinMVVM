@@ -7,14 +7,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
+import com.example.fff.BaseFragment
 import com.example.fff.NavGraphDirections
 import com.example.fff.R
 import com.example.fff.databinding.FragmentEpisodeListBinding
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.RuntimeException
 
-class EpisodeListFragment : Fragment(R.layout.fragment_episode_list) {
+class EpisodeListFragment : BaseFragment(R.layout.fragment_episode_list) {
 
     private var _binding: FragmentEpisodeListBinding? = null
     private val binding get () = _binding!!
@@ -41,6 +43,8 @@ class EpisodeListFragment : Fragment(R.layout.fragment_episode_list) {
         }
 
         binding.epoxyRecyclerView.setController(epoxyController)
+
+//        throw RuntimeException("for Firebase!")
     }
     override fun onDestroyView() {
         super.onDestroyView()

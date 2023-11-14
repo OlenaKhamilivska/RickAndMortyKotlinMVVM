@@ -11,8 +11,8 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int): Fragment(layoutRes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        FirebaseCrashlytics.getInstance().log(
-//            this.javaClass.simpleName
-//        )
+        FirebaseCrashlytics.getInstance().log(
+            this.javaClass.simpleName
+        )
     }
 }
