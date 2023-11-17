@@ -16,12 +16,10 @@ class CharactersDataSource (
     ) {
         coroutineScope.launch {
             val page = repository.getCharactersPage(1)
-
             if (page == null) {
                 callback.onResult(emptyList(), null, null)
                 return@launch
             }
-
             callback.onResult(page.results, null, getPageIndexFromNext(page.info.next))
         }
     }
@@ -37,7 +35,6 @@ class CharactersDataSource (
                 callback.onResult(emptyList(), params.key+1)
                 return@launch
             }
-
             callback.onResult(page.results, getPageIndexFromNext(page.info.next))
         }
     }

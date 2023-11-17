@@ -1,13 +1,9 @@
 package com.example.fff.domain.mappers
 
-
-
 import com.example.fff.domain.models.Character
 import com.example.fff.network.responce.GetCharacterByIdResponse
 import com.example.fff.network.responce.GetEpisodeByIdResponse
-
 object CharacterMapper {
-
     fun buildFrom (
         response: GetCharacterByIdResponse,
         episodes: List<GetEpisodeByIdResponse> = emptyList()

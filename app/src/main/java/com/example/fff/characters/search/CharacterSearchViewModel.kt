@@ -1,6 +1,5 @@
 package com.example.fff.characters.search
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +20,6 @@ class CharacterSearchViewModel : ViewModel() {
                     _localExceptionEventLiveData.postValue(Event(localException))
                 }
             }
-
             return field
         }
 
@@ -36,7 +34,6 @@ class CharacterSearchViewModel : ViewModel() {
     ) {
         pagingSource!!
     }.flow.cachedIn(viewModelScope)
-
     // For error handling propagation
     private val _localExceptionEventLiveData = MutableLiveData<Event<CharacterSearchPagingSource.LocalException>>()
     val localExceptionEventLiveData: LiveData<Event<CharacterSearchPagingSource.LocalException>> = _localExceptionEventLiveData

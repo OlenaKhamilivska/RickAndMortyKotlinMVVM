@@ -36,14 +36,11 @@ class CharacterDetailsEpoxyController (
         }
 
     override fun buildModels() {
-
         if (isLoading) {
             LoadingEpoxyModel().id("loading").addTo(this)
             return
         }
-
         if (character == null) {
-            // todo error state
             return
         }
         // Header Model
@@ -59,7 +56,6 @@ class CharacterDetailsEpoxyController (
         ).id("image").addTo(this)
 
         // Episode carousel list section
-        Log.d("TAG11!", "buildModels1: " + character!!.episodeList.isNotEmpty())
         if (character!!.episodeList.isNotEmpty()) {
             Log.d("TAG11!", "buildModels2: " + character!!.episodeList.isNotEmpty())
             val items = character!!.episodeList.map {
@@ -125,7 +121,6 @@ class CharacterDetailsEpoxyController (
             textView.text = description
         }
     }
-
 
     data class EpisodeCarouselItemEpoxyModel(
         val episode: Episode,

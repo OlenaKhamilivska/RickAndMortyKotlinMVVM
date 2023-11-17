@@ -1,7 +1,6 @@
 package com.example.fff.network
 
 import retrofit2.Response
-
 data class SimpleResponse<T>(
     val status: Status,
     val data: Response<T>?,

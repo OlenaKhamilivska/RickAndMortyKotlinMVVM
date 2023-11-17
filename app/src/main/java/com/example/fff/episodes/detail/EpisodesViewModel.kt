@@ -29,17 +29,14 @@ class EpisodesViewModel : ViewModel() {
             if (model == null) {
                 return@insertSeparators EpisodesUiModel.Header("Season 1")
             }
-
             // No footer
             if (model2 == null) {
                 return@insertSeparators null
             }
-
             // Make sure we only care about the items (episodes)
             if (model is EpisodesUiModel.Header || model2 is EpisodesUiModel.Header) {
                 return@insertSeparators null
             }
-
             // Little logic to determine if a separator is necessary
             val episode1 = (model as EpisodesUiModel.Item).episode
             val episode2 = (model2 as EpisodesUiModel.Item).episode

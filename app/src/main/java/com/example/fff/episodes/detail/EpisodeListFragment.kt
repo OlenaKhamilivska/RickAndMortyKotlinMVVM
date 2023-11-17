@@ -2,7 +2,6 @@ package com.example.fff.episodes.detail
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -14,13 +13,11 @@ import com.example.fff.databinding.FragmentEpisodeListBinding
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.lang.RuntimeException
 
 class EpisodeListFragment : BaseFragment(R.layout.fragment_episode_list) {
 
     private var _binding: FragmentEpisodeListBinding? = null
     private val binding get () = _binding!!
-
     private val viewModel: EpisodesViewModel by viewModels()
 
     @ObsoleteCoroutinesApi
@@ -41,10 +38,7 @@ class EpisodeListFragment : BaseFragment(R.layout.fragment_episode_list) {
                 epoxyController.submitData(pagingData)
             }
         }
-
         binding.epoxyRecyclerView.setController(epoxyController)
-
-//        throw RuntimeException("for Firebase!")
     }
     override fun onDestroyView() {
         super.onDestroyView()

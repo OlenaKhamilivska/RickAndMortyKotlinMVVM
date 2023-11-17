@@ -15,10 +15,8 @@ data class Character(
         val name: String,
         val url: String
     )
-
     data class Origin(
         val name: String,
         val url: String
     )
-
 }

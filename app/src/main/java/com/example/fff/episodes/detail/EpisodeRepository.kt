@@ -15,13 +15,10 @@ class EpisodeRepository {
         if (!pageRequest.isSuccessful) {
             return null
         }
-
         return pageRequest.body
     }
-
     suspend fun getEpisodeById(episodeId: Int): Episode? {
         val request = NetworkLayer.apiClient.getEpisodeById(episodeId)
-
         if (!request.isSuccessful) {
             return null
         }
@@ -32,14 +29,12 @@ class EpisodeRepository {
             networkCharacters = characterList
         )
     }
-
     private suspend fun getCharactersFromEpisodeResponse(
         episodeByIdResponse: GetEpisodeByIdResponse
     ): List<GetCharacterByIdResponse> {
         val characterList = episodeByIdResponse.characters.map {
             it.substring(startIndex = it.lastIndexOf("/") + 1)
         }
-
         val request = NetworkLayer.apiClient.getMultipleCharacters(characterList)
         return request.bodyNullable ?: emptyList()
     }

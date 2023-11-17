@@ -5,9 +5,9 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.fff.BaseFragment
 import com.example.fff.R
 import com.example.fff.databinding.FragmentCharacterSearchBinding
@@ -19,11 +19,10 @@ class CharacterSearchFragment : BaseFragment(R.layout.fragment_character_search)
 
     private var _binding: FragmentCharacterSearchBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: CharacterSearchViewModel by viewModels()
-
     private var currentText = ""
     private val handler = Handler(Looper.getMainLooper())
+
     private val searchRunnable = Runnable {
         viewModel.submitQuery(currentText)
     }
@@ -34,7 +33,10 @@ class CharacterSearchFragment : BaseFragment(R.layout.fragment_character_search)
         _binding = FragmentCharacterSearchBinding.bind(view)
 
         val epoxyController = CharacterSearchEpoxyController { characterId ->
-            // todo navigate to details page with ID
+            val directions = CharacterSearchFragmentDirections.actionCharacterSearchFragmentToCharacterDetailFragment(
+                characterId = characterId
+            )
+            findNavController().navigate(directions)
         }
         binding.epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
 

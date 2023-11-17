@@ -1,5 +1,4 @@
 package com.example.fff.network.responce
-
 data class GetEpisodeByIdResponse(
     val air_date: String,
     val characters: List<String>,

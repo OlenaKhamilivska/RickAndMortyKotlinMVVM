@@ -1,7 +1,6 @@
 package com.example.fff.network.responce
 
 data class GetCharacterByIdResponse(
-
     val created: String,
     val episode: List<String>,
     val gender: String,

@@ -1,5 +1,4 @@
 package com.example.fff.network.responce
-
 data class PageInfo(
     val count: Int = 0,
     val pages: Int = 0,

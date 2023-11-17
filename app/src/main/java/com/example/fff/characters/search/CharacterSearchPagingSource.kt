@@ -26,13 +26,11 @@ class CharacterSearchPagingSource(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
-
         if (userSearch.isEmpty()) {
             val exception = LocalException.EmptySearch
             localExceptionCallback(exception)
             return LoadResult.Error(exception)
         }
-
         val pageNumber = params.key ?: 1
         val previousKey = if (pageNumber == 1) null else pageNumber - 1
 
@@ -40,18 +38,15 @@ class CharacterSearchPagingSource(
             characterName = userSearch,
             pageIndex = pageNumber
         )
-
         // Fail to find something from the user's search
         if (request.data?.code() == 404) {
             val exception = LocalException.NoResults
             localExceptionCallback(exception)
             return LoadResult.Error(exception)
         }
-
         request.exception?.let {
             return LoadResult.Error(it)
         }
-
         return LoadResult.Page(
             data = request.bodyNullable?.results?.map { characterResponse ->
                 CharacterMapper.buildFrom(characterResponse)
@@ -80,14 +75,12 @@ class CharacterSearchPagingSource(
             return null
         }
 
-
         val remainder = next.substringAfter("page=")
         val finalIndex = if (remainder.contains('&')) {
             remainder.indexOfFirst { it == '&' }
         } else {
             remainder.length
         }
-
         return remainder.substring(0, finalIndex).toIntOrNull()
     }
 }

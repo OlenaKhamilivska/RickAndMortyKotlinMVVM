@@ -1,35 +1,23 @@
 package com.example.fff
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.format.DateFormat
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.fff.R
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+
 
 class NavGraphActivity: AppCompatActivity() {
 
-//    lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav_graph)
-
-//        FirebaseCrashlytics.getInstance().setUserId("12345")
-
-//        val dateFormat = DateFormat.getDateFormat(
-//            applicationContext
-//        )
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment

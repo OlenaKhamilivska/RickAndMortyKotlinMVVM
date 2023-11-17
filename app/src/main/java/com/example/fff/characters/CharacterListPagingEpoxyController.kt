@@ -4,19 +4,15 @@ import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.example.fff.network.responce.GetCharacterByIdResponse
 import com.example.fff.R
-import com.example.fff.characters.detail.CharacterDetailsEpoxyController
 import com.example.fff.epoxy.LoadingEpoxyModel
 import com.example.fff.epoxy.ViewBindingKotlinModel
 import com.example.fff.databinding.ModelCharacterListItemBinding
 import com.example.fff.databinding.ModelCharacterListTitleBinding
 import com.squareup.picasso.Picasso
 import java.util.Locale
-
 class CharacterListPagingEpoxyController(
     private val onCharacterSelected: (Int) -> Unit
 ): PagedListEpoxyController<GetCharacterByIdResponse>() {
-
-
 
     override fun buildItemModel(
         currentPosition: Int,
@@ -31,7 +27,6 @@ class CharacterListPagingEpoxyController(
     }
 
     override fun addModels(models: List<EpoxyModel<*>>) {
-
         if (models.isEmpty()) {
             LoadingEpoxyModel().id("loading").addTo(this)
             return

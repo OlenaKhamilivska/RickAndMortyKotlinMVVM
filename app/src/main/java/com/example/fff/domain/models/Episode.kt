@@ -1,6 +1,5 @@
 package com.example.fff.domain.models
 
-
 data class Episode(
     val id: Int = 0,
     val name: String = "",

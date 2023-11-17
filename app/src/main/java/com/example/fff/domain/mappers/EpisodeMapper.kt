@@ -3,9 +3,7 @@ package com.example.fff.domain.mappers
 import com.example.fff.domain.models.Episode
 import com.example.fff.network.responce.GetCharacterByIdResponse
 import com.example.fff.network.responce.GetEpisodeByIdResponse
-
 object EpisodeMapper {
-
     fun buildFrom(
         networkEpisode: GetEpisodeByIdResponse,
         networkCharacters: List<GetCharacterByIdResponse> = emptyList()
@@ -16,9 +14,9 @@ object EpisodeMapper {
             airDate = networkEpisode.air_date,
             seasonNumber = getSeasonNumberFromEpisodeString(networkEpisode.episode),
             episodeNumber = getEpisodeNumberFromEpisodeString(networkEpisode.episode),
-//            characters = networkCharacters.map {
-//                CharacterMapper.buildFrom(it)
-//            }
+            characters = networkCharacters.map {
+                CharacterMapper.buildFrom(it)
+            }
         )
     }
 

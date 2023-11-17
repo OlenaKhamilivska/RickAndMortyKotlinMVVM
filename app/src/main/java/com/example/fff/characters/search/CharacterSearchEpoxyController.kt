@@ -44,7 +44,6 @@ class CharacterSearchEpoxyController(
             LoadingEpoxyModel().id("loading").addTo(this)
             return
         }
-
         super.addModels(models)
     }
 
@@ -64,7 +63,6 @@ class CharacterSearchEpoxyController(
             }
         }
     }
-
 
     data class LocalExceptionErrorStateEpoxyModel(
         val localException: CharacterSearchPagingSource.LocalException

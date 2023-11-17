@@ -1,14 +1,9 @@
 package com.example.fff.characters
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.fff.BaseFragment
 import com.example.fff.R
 import com.example.fff.databinding.FragmentCharacterListBinding
@@ -19,7 +14,6 @@ class CharacterListFragment : BaseFragment(R.layout.fragment_character_list) {
 
     private var _binding: FragmentCharacterListBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: CharactersViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,7 +33,6 @@ class CharacterListFragment : BaseFragment(R.layout.fragment_character_list) {
         FirebaseCrashlytics.getInstance().recordException(
             RuntimeException("character Id $characterId")
         )
-//        throw RuntimeException("for Firebase")
         val directions =
             CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
                 characterId = characterId

@@ -5,21 +5,17 @@ import androidx.paging.PagingState
 import com.example.fff.network.NetworkLayer
 import com.example.fff.domain.mappers.EpisodeMapper
 
-
 class EpisodePagingSource(
-//    private val coroutineScope: CoroutineScope,
     private val repository: EpisodeRepository
 ) : PagingSource<Int, EpisodesUiModel>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, EpisodesUiModel> {
         val pageNumber = params.key ?: 1
         val previousKey = if (pageNumber == 1) null else pageNumber - 1
-
         val pageRequest = NetworkLayer.apiClient.getEpisodesPage(pageNumber)
         pageRequest.exception?.let {
             return LoadResult.Error(it)
         }
-
         return LoadResult.Page(
             data = pageRequest.body.results.map { response ->
                 EpisodesUiModel.Item(EpisodeMapper.buildFrom(response))
